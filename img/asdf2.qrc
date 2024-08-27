@@ -1,0 +1,17 @@
+<RCC>
+  <qresource prefix="newPrefix">
+    <file>coke.jpeg</file>
+    <file>gomitas.jpg</file>
+    <file>jet.jpeg</file>
+    <file>jet.png</file>
+    <file>lays.jpeg</file>
+    <file>lays_lem.jpeg</file>
+    <file>mm.jpg</file>
+    <file>mm_p.jpg</file>
+    <file>pepsi.jpg</file>
+    <file>snickers.jpeg</file>
+    <file>sponch.jpeg</file>
+    <file>takis.jpg</file>
+    <file>trident_straw.jpeg</file>
+  </qresource>
+</RCC>

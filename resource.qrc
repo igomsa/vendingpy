@@ -1,0 +1,18 @@
+<RCC>
+  <qresource prefix="resource">
+    <file>img/coke.jpeg</file>
+    <file>img/gomitas.jpg</file>
+    <file>img/jet.jpeg</file>
+    <file>img/jet.png</file>
+    <file>img/lays.jpeg</file>
+    <file>img/lays_lem.jpeg</file>
+    <file>img/mm.jpg</file>
+    <file>img/mm_p.jpg</file>
+    <file>img/pepsi.jpg</file>
+    <file>img/resources.py</file>
+    <file>img/snickers.jpeg</file>
+    <file>img/sponch.jpeg</file>
+    <file>img/takis.jpg</file>
+    <file>img/trident_straw.jpeg</file>
+  </qresource>
+</RCC>
