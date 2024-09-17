@@ -85,10 +85,11 @@ class MainWindow:
         self.ui.E5_button.clicked.connect(self.Show_E5)
 
 
-
-        # Dispense screen buttons response
+    # Dispense screen buttons response
     def Show_Refill(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.refill)
+
+
     def Show_Coke(self):
         self.ui.coke_button.hide()
 
@@ -112,6 +113,7 @@ class MainWindow:
 
         QTimer.singleShot(1000, lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.dispense))
 
+
     def Show_Mm(self):
 
         if self.vm.Dispense('mm'):
@@ -121,6 +123,7 @@ class MainWindow:
             self.ui.stackedWidget.setCurrentWidget(self.ui.no_product)
 
         QTimer.singleShot(1000, lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.dispense))
+
 
     def Show_Takis(self):
 
@@ -132,6 +135,7 @@ class MainWindow:
 
         QTimer.singleShot(1000, lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.dispense))
 
+
     def Show_Layslem(self):
 
         if self.vm.Dispense('layslem'):
@@ -141,6 +145,7 @@ class MainWindow:
             self.ui.stackedWidget.setCurrentWidget(self.ui.no_product)
 
         QTimer.singleShot(1000, lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.dispense))
+
 
     def Show_Sponch(self):
 
@@ -152,6 +157,7 @@ class MainWindow:
 
         QTimer.singleShot(1000, lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.dispense))
 
+
     def Show_Mmp(self):
 
         if self.vm.Dispense('mmp'):
@@ -161,6 +167,7 @@ class MainWindow:
             self.ui.stackedWidget.setCurrentWidget(self.ui.no_product)
 
         QTimer.singleShot(1000, lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.dispense))
+
 
     def Show_Trident(self):
 
@@ -172,6 +179,7 @@ class MainWindow:
 
         QTimer.singleShot(1000, lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.dispense))
 
+
     def Show_Snickers(self):
 
         if self.vm.Dispense('snickers'):
@@ -181,6 +189,7 @@ class MainWindow:
             self.ui.stackedWidget.setCurrentWidget(self.ui.no_product)
 
         QTimer.singleShot(1000, lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.dispense))
+
 
     def Show_Lays(self):
 
@@ -192,6 +201,7 @@ class MainWindow:
 
         QTimer.singleShot(1000, lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.dispense))
 
+
     def Show_Gummies(self):
 
         if self.vm.Dispense('gummies'):
@@ -201,6 +211,7 @@ class MainWindow:
             self.ui.stackedWidget.setCurrentWidget(self.ui.no_product)
 
         QTimer.singleShot(1000, lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.dispense))
+
 
     def Show_Pepsi(self):
 
@@ -216,50 +227,62 @@ class MainWindow:
         # Refill screen buttons
     def Show_Dispense(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.dispense)
+
     def Show_Refill_Coke(self):
         self.product_refill = 'coke'
         self.quantity_refill = self.ui.spinBox.value()
         self.ui.stackedWidget.setCurrentWidget(self.ui.position)
+
     def Show_Refill_Jet(self):
         self.product_refill = 'jet'
         self.quantity_refill = self.ui.spinBox.value()
         self.ui.stackedWidget.setCurrentWidget(self.ui.position)
+
     def Show_Refill_Mm (self):
         self.product_refill = 'mm'
         self.quantity_refill = self.ui.spinBox.value()
         self.ui.stackedWidget.setCurrentWidget(self.ui.position)
+
     def Show_Refill_Takis(self):
         self.product_refill = 'takis'
         self.quantity_refill = self.ui.spinBox.value()
         self.ui.stackedWidget.setCurrentWidget(self.ui.position)
+
     def Show_Refill_Layslem(self):
         self.product_refill = 'layslem'
         self.quantity_refill = self.ui.spinBox.value()
         self.ui.stackedWidget.setCurrentWidget(self.ui.position)
+
     def Show_Refill_Sponch(self):
         self.product_refill = 'sponch'
         self.quantity_refill = self.ui.spinBox.value()
         self.ui.stackedWidget.setCurrentWidget(self.ui.position)
+
     def Show_Refill_Mmp(self):
         self.product_refill = 'mmp'
         self.quantity_refill = self.ui.spinBox.value()
         self.ui.stackedWidget.setCurrentWidget(self.ui.position)
+
     def Show_Refill_Trident(self):
         self.product_refill = 'trident'
         self.quantity_refill = self.ui.spinBox.value()
         self.ui.stackedWidget.setCurrentWidget(self.ui.position)
+
     def Show_Refill_Snickers(self):
         self.product_refill = 'snickers'
         self.quantity_refill = self.ui.spinBox.value()
         self.ui.stackedWidget.setCurrentWidget(self.ui.position)
+
     def Show_Refill_Lays(self):
         self.product_refill = 'lays'
         self.quantity_refill = self.ui.spinBox.value()
         self.ui.stackedWidget.setCurrentWidget(self.ui.position)
+
     def Show_Refill_Gummies(self):
         self.product_refill = 'gummies'
         self.quantity_refill = self.ui.spinBox.value()
         self.ui.stackedWidget.setCurrentWidget(self.ui.position)
+
     def Show_Refill_Pepsi(self):
         self.product_refill = 'pepsi'
         self.quantity_refill = self.ui.spinBox.value()
@@ -270,6 +293,7 @@ class MainWindow:
         # Position buttons
     def Show_Back(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.refill)
+
     def Show_A1(self):
         self.row=0
         self.column=0
@@ -286,6 +310,8 @@ class MainWindow:
             self.ui.stackedWidget.setCurrentWidget(self.ui.stack_not_empty)
 
         QTimer.singleShot(3000, lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.dispense))
+
+
     def Show_A2(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.stack_refilled)
         self.row=0
@@ -303,6 +329,8 @@ class MainWindow:
             self.ui.stackedWidget.setCurrentWidget(self.ui.stack_not_empty)
 
         QTimer.singleShot(3000, lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.dispense))
+
+
     def Show_A3(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.stack_refilled)
         self.row=0
@@ -320,6 +348,8 @@ class MainWindow:
             self.ui.stackedWidget.setCurrentWidget(self.ui.stack_not_empty)
 
         QTimer.singleShot(3000, lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.dispense))
+
+
     def Show_A4(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.stack_refilled)
         self.row=0
@@ -337,6 +367,8 @@ class MainWindow:
             self.ui.stackedWidget.setCurrentWidget(self.ui.stack_not_empty)
 
         QTimer.singleShot(3000, lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.dispense))
+
+
     def Show_A5(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.stack_refilled)
         self.row=0
@@ -354,6 +386,8 @@ class MainWindow:
             self.ui.stackedWidget.setCurrentWidget(self.ui.stack_not_empty)
 
         QTimer.singleShot(3000, lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.dispense))
+
+
     def Show_B1(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.stack_refilled)
         self.row=1
@@ -371,6 +405,8 @@ class MainWindow:
             self.ui.stackedWidget.setCurrentWidget(self.ui.stack_not_empty)
 
         QTimer.singleShot(3000, lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.dispense))
+
+
     def Show_B2(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.stack_refilled)
         self.row=1
@@ -388,6 +424,8 @@ class MainWindow:
             self.ui.stackedWidget.setCurrentWidget(self.ui.stack_not_empty)
 
         QTimer.singleShot(3000, lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.dispense))
+
+
     def Show_B3(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.stack_refilled)
         self.row=1
@@ -405,6 +443,8 @@ class MainWindow:
             self.ui.stackedWidget.setCurrentWidget(self.ui.stack_not_empty)
 
         QTimer.singleShot(3000, lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.dispense))
+
+
     def Show_B4(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.stack_refilled)
         self.row=1
@@ -422,6 +462,8 @@ class MainWindow:
             self.ui.stackedWidget.setCurrentWidget(self.ui.stack_not_empty)
 
         QTimer.singleShot(3000, lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.dispense))
+
+
     def Show_B5(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.stack_refilled)
         self.row=1
@@ -439,6 +481,8 @@ class MainWindow:
             self.ui.stackedWidget.setCurrentWidget(self.ui.stack_not_empty)
 
         QTimer.singleShot(3000, lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.dispense))
+
+
     def Show_C1(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.stack_refilled)
         self.row=2
@@ -456,6 +500,8 @@ class MainWindow:
             self.ui.stackedWidget.setCurrentWidget(self.ui.stack_not_empty)
 
         QTimer.singleShot(3000, lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.dispense))
+
+
     def Show_C2(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.stack_refilled)
         self.row=2
@@ -473,6 +519,8 @@ class MainWindow:
             self.ui.stackedWidget.setCurrentWidget(self.ui.stack_not_empty)
 
         QTimer.singleShot(3000, lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.dispense))
+
+
     def Show_C3(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.stack_refilled)
         self.row=2
@@ -490,6 +538,8 @@ class MainWindow:
             self.ui.stackedWidget.setCurrentWidget(self.ui.stack_not_empty)
 
         QTimer.singleShot(3000, lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.dispense))
+
+
     def Show_C4(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.stack_refilled)
         self.row=2
@@ -507,6 +557,8 @@ class MainWindow:
             self.ui.stackedWidget.setCurrentWidget(self.ui.stack_not_empty)
 
         QTimer.singleShot(3000, lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.dispense))
+
+
     def Show_C5(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.stack_refilled)
         self.row=2
@@ -524,6 +576,8 @@ class MainWindow:
             self.ui.stackedWidget.setCurrentWidget(self.ui.stack_not_empty)
 
         QTimer.singleShot(3000, lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.dispense))
+
+
     def Show_D1(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.stack_refilled)
         self.row=3
@@ -541,6 +595,8 @@ class MainWindow:
             self.ui.stackedWidget.setCurrentWidget(self.ui.stack_not_empty)
 
         QTimer.singleShot(3000, lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.dispense))
+
+
     def Show_D2(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.stack_refilled)
         self.row=3
@@ -558,6 +614,8 @@ class MainWindow:
             self.ui.stackedWidget.setCurrentWidget(self.ui.stack_not_empty)
 
         QTimer.singleShot(3000, lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.dispense))
+
+
     def Show_D3(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.stack_refilled)
         self.row=3
@@ -575,6 +633,8 @@ class MainWindow:
             self.ui.stackedWidget.setCurrentWidget(self.ui.stack_not_empty)
 
         QTimer.singleShot(3000, lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.dispense))
+
+
     def Show_D4(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.stack_refilled)
         self.row=3
@@ -592,6 +652,8 @@ class MainWindow:
             self.ui.stackedWidget.setCurrentWidget(self.ui.stack_not_empty)
 
         QTimer.singleShot(3000, lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.dispense))
+
+
     def Show_D5(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.stack_refilled)
         self.row=3
@@ -609,6 +671,8 @@ class MainWindow:
             self.ui.stackedWidget.setCurrentWidget(self.ui.stack_not_empty)
 
         QTimer.singleShot(3000, lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.dispense))
+
+
     def Show_E1(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.stack_refilled)
         self.row=4
@@ -626,6 +690,8 @@ class MainWindow:
             self.ui.stackedWidget.setCurrentWidget(self.ui.stack_not_empty)
 
         QTimer.singleShot(3000, lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.dispense))
+
+
     def Show_E2(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.stack_refilled)
         self.row=4
@@ -643,6 +709,8 @@ class MainWindow:
             self.ui.stackedWidget.setCurrentWidget(self.ui.stack_not_empty)
 
         QTimer.singleShot(3000, lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.dispense))
+
+
     def Show_E3(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.stack_refilled)
         self.row=4
@@ -660,6 +728,8 @@ class MainWindow:
             self.ui.stackedWidget.setCurrentWidget(self.ui.stack_not_empty)
 
         QTimer.singleShot(3000, lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.dispense))
+
+
     def Show_E4(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.stack_refilled)
         self.row=4
@@ -677,6 +747,8 @@ class MainWindow:
             self.ui.stackedWidget.setCurrentWidget(self.ui.stack_not_empty)
 
         QTimer.singleShot(3000, lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.dispense))
+
+
     def Show_E5(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.stack_refilled)
         self.row=4
@@ -694,7 +766,8 @@ class MainWindow:
             self.ui.stackedWidget.setCurrentWidget(self.ui.stack_not_empty)
 
         QTimer.singleShot(3000, lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.dispense))
-        
+
+
     def show(self):
         self.main_win.show()
 
