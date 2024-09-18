@@ -1,4 +1,3 @@
-#vendingpy
 #  Python/MQTT Vending Machine
 
 
@@ -6,10 +5,10 @@
 
 1. [Introduction](#introduction)
 2. [Requirements](#requirements)
-3. [Software Architecture](#sw_arch)
-   1. [Graphical Interface Configuration Module](#gicm)
-   2. [Vending Machine Module](#vmm)
-   3. [Graphical Interface Module](#gim)
+3. [Software Architecture](#software-architecture)
+   1. [Graphical Interface Configuration Module](#graphical-interface-configuration-module)
+   2. [Vending Machine Module](#vending-machine-module)
+   3. [Graphical Interface Module](#graphical-interface-module)
 4. [Execution](#execution)
 
 
@@ -32,7 +31,11 @@ The system is connected via the Internet to a server that is notified of every p
 ## Software Architecture
 On this occasion, an architecture like the one shown in Figure 1 was implemented. In it you can see 3 large modules, which contain the main elements of the software. Such modules have the following functionality:
 
-![Software Architecture](/img/Architecture_SW.jpg "Software Architecture")
+<div align="center">
+
+   ![Software Architecture](/img/Architecture_SW.jpg "Software Architecture")
+
+</div>
 
 ### Graphical Interface Configuration Module: 
 This module is responsible for defining the dimensions, appearance and general properties of the windows, buttons and all the elements that make up the graphical interface.
