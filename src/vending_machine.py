@@ -17,8 +17,10 @@ class VENDING_MACHINE(object):
         """
         self.posible_product = ['coke', 'jet', 'mm', 'takis', 'layslem', 'sponch', 'mmp', 'trident', 'snickers', 'lays', 'gummies', 'pepsi']
         self.product = product = [[random.choice(self.posible_product)]*5 for i in range(25)]
+
         self.client = mqtt.Client("00")
         self.client.connect("localhost")
+
         print("\n product: \n",self.product)
 
 
@@ -37,8 +39,11 @@ class VENDING_MACHINE(object):
             # Fills the respective product stack, regarding the row and column values.
             self.product[row*5+column] = [product_refill for i in range(quantity_refill)]
             print("\n product: \n",self.product)
+
             self.client.publish("isaac/test","holi")
+
             return 1
+
         else:
             return 0  # Mosquito server notification of refill
 
@@ -55,29 +60,35 @@ class VENDING_MACHINE(object):
         print("\n product: \n",self.product)
         matches = []
         print(matches)
+
         for i in range(len(self.product)):
             if (len(self.product[i]) > 0) and (self.product[i][0] == product_dispense):
                 matches = matches+[i]
         print(matches)
+
         # Creates a list that will contain the quantity of each stack of product found.
         quatity_list = [0 for i in range(len(matches))]
         list = [0 for i in range(len(matches))]
         print("\n first list" , list , "\n")
+
         for i in range(len(matches)):
             print(i)
             list[i] = len(self.product[matches[i]])
         print("\n second list" , list, "\n")
+
         try:
             # Finds the product stack with minimum quantity
             m = min(i for i in list if i > 0)
             print("minimun: ",m)
-            # Get the index of the minimun quantity of product, in  the list of product quantities.
+            # Get the index of the minimun quantity of product, in the list of product quantities.
             list_index = list.index(m)
             print("list index: ",list_index)
         except:
             print("failed")
+
         # Erase one product from the stack.
         del self.product[matches[list_index]][0]
+
         ## report to MOSQUITO SERVER
         print("Dispensing: "+ product_dispense)
         if len(matches) == 0 and self.product[matches[list_index]] == []:
