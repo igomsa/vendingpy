@@ -10,10 +10,11 @@
    2. [Vending Machine Module](#vending-machine-module)
    3. [Graphical Interface Module](#graphical-interface-module)
 4. [Execution](#execution)
+5. [ToDo](#todo)
 
 
 ## Introduction
-This repository contains a project to simulate a prototype of a vending machine system. It consists of an user-interactive LCD screen, which presents different products to be purchased by the user and dispensed by the machine. 
+This repository contains a project to simulate a prototype of a vending machine system required as part of the Embeded Systems course at University of Costa Rica. It consists of an user-interactive LCD screen, which presents different products to be purchased by the user and dispensed by the machine. 
 
 The system is connected via the Internet to a server that is notified of every purchase made, and every time a product ran out of the machine. 
 
@@ -59,3 +60,24 @@ In a new terminal, go to the src folder and run the following command:
 python3 display.py
 ```
 
+## Repo Planning
+Following are some upcoming items projected for the repo:
+
+### Todo
+
+- [ ] Set tests to ensure resilience to errors.
+- [ ] Implement CI/CD on project.
+- [ ] Add description of GUI functionality on README.
+- [ ] Improve GUI's appearance. 
+
+### In Progress
+
+- [ ] Solve GUI's resolution bugs. 
+- [ ] Elaboration of Makefile to automate excecution.
+  - [ ] Automation of MQTT server deployment. 
+  - [ ] Automation of software run.
+
+### Done ✓
+
+- [x] Add README file with project description.
+- [x] Ordering src archives with coherent hierarchy. 
