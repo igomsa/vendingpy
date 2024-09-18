@@ -40,7 +40,7 @@ class VENDING_MACHINE(object):
             self.product[row*5+column] = [product_refill for i in range(quantity_refill)]
             print("\n product: \n",self.product)
 
-            self.client.publish("isaac/test","holi")
+            self.client.publish("host/test","hi")
 
             return 1
 
