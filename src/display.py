@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 
 import sys
-import time
 sys.path.append(".")
 
 from PyQt5 import QtWidgets

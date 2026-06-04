@@ -1,97 +1,72 @@
 #!/usr/bin/env python3
+"""Vending-machine inventory model with MQTT transaction notifications.
 
+The machine holds 25 slots (a 5x5 grid); each slot is a stack of identical
+products. Dispensing and refilling publish a short message to an MQTT broker so
+an external monitor can observe the machine's activity.
+"""
+
+import os
 import random
 
 import paho.mqtt.client as mqtt
 
+# Broker host and topic are configurable via the environment so the simulator
+# can target a remote broker instead of being hard-wired to localhost.
+MQTT_BROKER = os.environ.get("MQTT_BROKER", "localhost")
+MQTT_TOPIC = os.environ.get("MQTT_TOPIC", "host/vm")
+
+COLUMNS = 5
+STACK_SIZE = 5
+SLOTS = 25
+
+
 class VENDING_MACHINE(object):
+    """Inventory of stacked products with MQTT notifications per transaction."""
 
+    def __init__(self, broker=MQTT_BROKER, topic=MQTT_TOPIC, connect=True):
+        """Build a machine with every slot randomly stocked.
 
-    def __init__(self):
-        """ Class constructor
-
-        Attributes:
-        posible_product: Items that can be chosen in vending machine.
-        product: Name of product to be refilled.
-        client: MQTT client.
+        Args:
+            broker:  MQTT broker host.
+            topic:   MQTT topic to publish transactions to.
+            connect: open the MQTT connection now (set False in tests).
         """
-        self.posible_product = ['coke', 'jet', 'mm', 'takis', 'layslem', 'sponch', 'mmp', 'trident', 'snickers', 'lays', 'gummies', 'pepsi']
-        self.product = product = [[random.choice(self.posible_product)]*5 for i in range(25)]
-
+        self.posible_product = ['coke', 'jet', 'mm', 'takis', 'layslem',
+                                'sponch', 'mmp', 'trident', 'snickers',
+                                'lays', 'gummies', 'pepsi']
+        self.product = [[random.choice(self.posible_product)] * STACK_SIZE
+                        for _ in range(SLOTS)]
+        self.topic = topic
         self.client = mqtt.Client("00")
-        self.client.connect("localhost")
+        if connect:
+            self.client.connect(broker)
 
-        print("\n product: \n",self.product)
+    def Refill(self, product_refill, quantity_refill, row, column):
+        """Refill an empty slot.
 
-
-
-
-    def Refill(self,product_refill,quantity_refill, row, column):
-        """ Method to refill the product in the machine.
-
-        Params:
-        quantity_refill: Quantity of product to be refilled.
-        product_refill: Name of product to be refilled.
-        row: Desired row to refill.
-        column: Desired column to refill.
+        Returns 1 if the slot was empty and got filled, 0 otherwise.
         """
-        if self.product[row*5+column]==[]:
-            # Fills the respective product stack, regarding the row and column values.
-            self.product[row*5+column] = [product_refill for i in range(quantity_refill)]
-            print("\n product: \n",self.product)
-
-            self.client.publish("host/test","hi")
-
+        slot = row * COLUMNS + column
+        if self.product[slot] == []:
+            self.product[slot] = [product_refill for _ in range(quantity_refill)]
+            self.client.publish(self.topic, "refill:" + product_refill)
             return 1
-
-        else:
-            return 0  # Mosquito server notification of refill
-
-
-
+        return 0
 
     def Dispense(self, product_dispense):
-        """ Dispense product from vending machine
+        """Dispense one unit of a product.
 
-        Params:
-        product_dispense: Product to be dispense (only dispensing by one)
+        Returns 1 on success, 0 if the product is not available. When several
+        slots hold the product, the smallest non-empty stack is emptied first so
+        partially filled slots clear out before full ones.
         """
-        # Finds the memory locations where the product is located in the matrix.
-        print("\n product: \n",self.product)
-        matches = []
-        print(matches)
-
-        for i in range(len(self.product)):
-            if (len(self.product[i]) > 0) and (self.product[i][0] == product_dispense):
-                matches = matches+[i]
-        print(matches)
-
-        # Creates a list that will contain the quantity of each stack of product found.
-        quatity_list = [0 for i in range(len(matches))]
-        list = [0 for i in range(len(matches))]
-        print("\n first list" , list , "\n")
-
-        for i in range(len(matches)):
-            print(i)
-            list[i] = len(self.product[matches[i]])
-        print("\n second list" , list, "\n")
-
-        try:
-            # Finds the product stack with minimum quantity
-            m = min(i for i in list if i > 0)
-            print("minimun: ",m)
-            # Get the index of the minimun quantity of product, in the list of product quantities.
-            list_index = list.index(m)
-            print("list index: ",list_index)
-        except:
-            print("failed")
-
-        # Erase one product from the stack.
-        del self.product[matches[list_index]][0]
-
-        ## report to MOSQUITO SERVER
-        print("Dispensing: "+ product_dispense)
-        if len(matches) == 0 and self.product[matches[list_index]] == []:
+        matches = [i for i, stack in enumerate(self.product)
+                   if stack and stack[0] == product_dispense]
+        if not matches:
             return 0
-        else:
-            return 1
+
+        target = min(matches, key=lambda i: len(self.product[i]))
+        del self.product[target][0]
+        self.client.publish(self.topic, "dispense:" + product_dispense)
+        return 1
