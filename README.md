@@ -14,7 +14,7 @@
 
 
 ## Introduction
-This repository contains a project to simulate a prototype of a vending machine system required as part of the Embeded Systems course at University of Costa Rica. It consists of an user-interactive LCD screen, which presents different products to be purchased by the user and dispensed by the machine. 
+This repository contains a project to simulate a prototype of a vending machine system required as part of the Embedded Systems course at University of Costa Rica. It consists of an user-interactive LCD screen, which presents different products to be purchased by the user and dispensed by the machine. 
 
 The system is connected via the Internet to a server that is notified of every purchase made, and every time a product ran out of the machine. 
 
@@ -27,7 +27,6 @@ The system is connected via the Internet to a server that is notified of every p
 + mosquitto-clients
 + python3-pip
 + "paho-mqtt<2.0.0"
-+ python-etcd
 
 ## Software Architecture
 On this occasion, an architecture like the one shown in Figure 1 was implemented. In it you can see 3 large modules, which contain the main elements of the software. Such modules have the following functionality:
@@ -42,8 +41,7 @@ On this occasion, an architecture like the one shown in Figure 1 was implemented
 This module is responsible for defining the dimensions, appearance and general properties of the windows, buttons and all the elements that make up the graphical interface.
 
 ### Vending Machine Module: 
-This module is responsible for the actions of dispensing a product from the vending machine, refilling a stack of product, defining the initial content of the vending machine and defining the products that can be added. 
-garnish and dispense. On the other hand, this module is also responsible for connecting to the MQTT server, as well as sending messages to it.
+This module is responsible for the actions of dispensing a product from the vending machine, refilling a stack of product, defining the initial content of the vending machine and defining the products that can be added. On the other hand, this module is also responsible for connecting to the MQTT server, as well as sending messages to it.
 
 ### Graphical Interface Module: 
 This module is responsible for managing all the interactions of the graphical interface. Defines the actions to be taken when a button is pressed or when a particular situation occurs. It is, in general, responsible for generating the application experience, using the elements of the graphical interface.
@@ -65,7 +63,6 @@ Following are some upcoming items projected for the repo:
 
 ### Todo
 
-- [ ] Set tests to ensure resilience to errors.
 - [ ] Implement CI/CD on project.
 - [ ] Add description of GUI functionality on README.
 - [ ] Improve GUI's appearance. 
@@ -73,11 +70,11 @@ Following are some upcoming items projected for the repo:
 ### In Progress
 
 - [ ] Solve GUI's resolution bugs. 
-- [ ] Elaboration of Makefile to automate excecution.
-  - [ ] Automation of MQTT server deployment. 
-  - [ ] Automation of software run.
+- [ ] Automate MQTT server deployment.
 
 ### Done ✓
 
 - [x] Add README file with project description.
 - [x] Ordering src archives with coherent hierarchy. 
+- [x] Add unit tests for the vending machine model.
+- [x] Add Makefile to automate run/test/lint.
